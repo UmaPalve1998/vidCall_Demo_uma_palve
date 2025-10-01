@@ -8,7 +8,7 @@ import '../models/user_info_model.dart';
 
 class UserController extends GetxController {
   RxList<User> users = <User>[].obs;
-  RxBool isLoading = true.obs;
+  RxBool isLoadingList = true.obs;
 
   late Box<User> userBox;
 
@@ -19,7 +19,7 @@ class UserController extends GetxController {
   }
   final LoginApiProvider apiProvider = LoginApiProvider();
   Future<void> fetchUsers() async {
-    isLoading.value = true;
+    isLoadingList.value = true;
   users.clear();
     try {
       final response = await http.get(Uri.parse("https://jsonplaceholder.typicode.com/users"),headers:    {'Accept': 'application/json'},);
@@ -45,7 +45,7 @@ class UserController extends GetxController {
     } catch (e) {
       loadFromCache();
     }finally{
-      isLoading.value = false;
+      isLoadingList.value = false;
       update();
     }
 

@@ -14,7 +14,7 @@ class MeetingController extends GetxController {
   final String appId = "765f3d5b39b44a76a233793493384fd1";
   final String token = "007eJxTYPjLmJj82T1eSdF/SpDtXJE3p+4G6QYG9FZk7S002OYjUK/AYG5mmmacYppkbJlkYpJobpZoZGxsbmlsYmlsbGGSlmIowXonoyGQkeFewn9GRgYIBPEFGNLz89NzUuNzU1NL4ktSi0sYGAAhxiIg";  ///ull if no token
   final String channelName = "google_meet_test";
-
+  final TextEditingController controller = TextEditingController();
   late RtcEngine engine;
   RxBool isMuted = false.obs;
   RxBool isVideoDisabled = false.obs;
@@ -78,7 +78,7 @@ class MeetingController extends GetxController {
     await engine.joinChannel(
       token: token,
       channelId: channelName,
-      uid: 0,
+      uid: controller.text.isNotEmpty? int.parse(controller.text) :0,
       options: const ChannelMediaOptions(),
     );
     isLoading.value=false;

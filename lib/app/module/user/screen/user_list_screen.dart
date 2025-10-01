@@ -29,7 +29,7 @@ class _UserListScreenState extends State<UserListScreen> {
         height: MediaQuery.of(context).size.height / 1.5,
           child: Obx(() {
 
-            return  (ctrl.isLoading.value)
+            return  (ctrl.isLoadingList.value)
             ?Center(child: CircularProgressIndicator()) :ListView.builder(
               itemCount: ctrl.users.length,
               shrinkWrap: true,
