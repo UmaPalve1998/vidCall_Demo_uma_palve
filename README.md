@@ -30,4 +30,7 @@ Login credentials - Email: john@mail.com         password:changeme
 6. To build apk - flutter build apk --target-platform android-arm,android-arm64,android-x64 --split-per-abi 
 7. Login credentials - Email: john@mail.com         password:changeme
 8. Click on start call
+9. For first vido call persone enter 0 Uid
+10. for other vido call person enter 1 UID
+11. if you try to strt meeting after 24 hourse then token is expried- ned to refresh token from agora web
 
