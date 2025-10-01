@@ -4,13 +4,30 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+VidCall is a Flutter-based application that enables **real-time one-to-one video calling** using Amazon Chime SDK (preferred) or any RTC SDK (Agora, Twilio, WebRTC).
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🚀 Features
+- 🔐 User login with email & password
+- 📞 One-to-one video calling
+- 📹 Local & remote video streams
+- 🎤 Mute/unmute audio & video toggle
+- 📱 Cross-platform support (Android & iOS)
+- ⚡ State management with Provider / GetX
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Flutter SDK supported - flutter_windows_3.32.8-stable
+Login credentials - Email: john@mail.com         password:changeme
+
+---
+
+## 🛠️ Installation
+1. **Clone the repository**
+2. Open project in android studio
+3. Setup flutter enviroment- Flutter SDK supported - flutter_windows_3.32.8-stable 
+4. flutter pub get 
+5. Run flutter project cmd -  flutter run 
+6. To build apk - flutter build apk --target-platform android-arm,android-arm64,android-x64 --split-per-abi 
+7. Login credentials - Email: john@mail.com         password:changeme
+8. Click on start call
+
