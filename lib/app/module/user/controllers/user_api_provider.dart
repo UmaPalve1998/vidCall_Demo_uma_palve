@@ -8,7 +8,7 @@ import '../../../stores/app_exception.dart';
 import '../../../stores/rest_apis_urls.dart';
 import 'package:http/http.dart' as http;
 
-class VideoProvider {
+class UserProvider {
   final HttpClient _httpClient = HttpClient();
 
   Future<String> getUser() async {

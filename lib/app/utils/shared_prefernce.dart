@@ -29,10 +29,9 @@ class SPManager {
   }
 
   // Set login details
-  Future<bool> setLoginDetails(LoginResponse loginDetails) async {
+  Future<bool> setLoginDetails(String loginDetails) async {
     await _initPrefs();
-    String jsonString = jsonEncode(loginDetails); // Convert to JSON string
-    return await _prefs.setString(_spLoginDetailsKey, jsonString);
+    return await _prefs.setString(_spLoginDetailsKey, loginDetails);
   }
 
   // Get login details

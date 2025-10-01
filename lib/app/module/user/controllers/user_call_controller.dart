@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 
+import '../../auth/controllers/login_api_provider.dart';
 import '../models/user_info_model.dart';
 
 class UserController extends GetxController {
@@ -15,40 +16,40 @@ class UserController extends GetxController {
   void onInit() async {
     super.onInit();
     userBox = await Hive.openBox<User>('users');
-    fetchUsers();
   }
-
+  final LoginApiProvider apiProvider = LoginApiProvider();
   Future<void> fetchUsers() async {
     isLoading.value = true;
-
+  users.clear();
     try {
-      final response = await http.get(Uri.parse("https://jsonplaceholder.typicode.com/users"));
-      print("useList ${response.body}");
+      final response = await http.get(Uri.parse("https://jsonplaceholder.typicode.com/users"),headers:    {'Accept': 'application/json'},);
       if (response.statusCode == 200) {
-        print("useList ${response.body}");
-        final List<dynamic> data = json.decode(response.body);
-        users.value = data.map((json) {
-          // Use avatar placeholder
-          return User(
-            id: json['id'],
-            name: json['name'],
-            avatar: "https://i.pravatar.cc/150?img=${json['id']}",
-          );
-        }).toList();
-print("useList ${users.value}");
-        // Cache locally
-        await userBox.clear();
-        await userBox.addAll(users);
-        update();
 
+        final List<dynamic> data = json.decode(response.body);
+        for(int i=0;i<data.length;i++){
+          User u = User(
+            id: data[i]['id'],
+            name: data[i]['name'],
+            avatar: "https://i.pravatar.cc/150?img=${data[i]['id']}",
+          );
+          users.value.insert(users.length, u);
+          print("user ${users[i].name}");
+
+        }
+        print("useList ${  users.value}");
+        update();
+        print("useList ${  users.value}");
       } else {
         loadFromCache();
       }
     } catch (e) {
       loadFromCache();
+    }finally{
+      isLoading.value = false;
+      update();
     }
 
-    isLoading.value = false;
+
   }
 
   void loadFromCache() {

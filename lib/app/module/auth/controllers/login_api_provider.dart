@@ -24,9 +24,7 @@ class LoginApiProvider {
         await SPManager.instance
             .setToken(loginResponse.access_token!); // Example of saving the token
       }
-      if (loginResponse != null) {
-        await SPManager.instance.setLoginDetails(loginResponse!);
-      }
+
       return loginResponse;
     } else {
       throw FetchDataException("Failed to login", RestApisUrls.authURL);
